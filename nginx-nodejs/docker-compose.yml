@@ -23,6 +23,21 @@ services:
     networks:
       - nodejsnet
 
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: always
+    tty: true
+    command: --innodb-use-native-aio=0
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: nodedb
+      MYSQL_ROOT_PASSWORD: root
+
+    networks:
+      - nodejsnet
+
 networks:
   nodejsnet:
     driver: bridge
