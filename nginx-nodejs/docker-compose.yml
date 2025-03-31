@@ -37,6 +37,7 @@ services:
     command: --innodb-use-native-aio=0
     volumes:
       - ./mysql/data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       MYSQL_DATABASE: nodedb
       MYSQL_ROOT_PASSWORD: root
