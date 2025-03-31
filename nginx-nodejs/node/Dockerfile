@@ -2,6 +2,8 @@ FROM node:20
 
 WORKDIR /usr/src/app
 
+COPY ./app/package*.json ./
+
 ENV DOCKERIZE_VERSION v0.9.3
 
 RUN apt-get update \
@@ -10,6 +12,8 @@ RUN apt-get update \
   && apt-get autoremove -yqq --purge wget && rm -rf /var/lib/apt/lists/*
 
 RUN npm install
+
+COPY ./app .
 
 EXPOSE 3000
 
